@@ -10,13 +10,14 @@ var HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = merge(common, {
   mode: "production",
   output: {
-    filename: "[name].[contentHash].bundle.js",
+    filename: "[name].[contentHash].bundle.js",  // need to put the output_file_name different every time by using [contentHash]
     path: path.resolve(__dirname, "dist")
   },
   optimization: {
     minimizer: [
       new OptimizeCssAssetsPlugin(),
       new TerserPlugin(),
+      // HtmlWebpackPlugin condenses the Html files
       new HtmlWebpackPlugin({
         template: "./src/template.html",
         minify: {
@@ -28,6 +29,7 @@ module.exports = merge(common, {
     ]
   },
   plugins: [
+      // miniCSS plugin used to compression the CSS files to increase the load efficiency of files
     new MiniCssExtractPlugin({ filename: "[name].[contentHash].css" }),
     new CleanWebpackPlugin()
   ],

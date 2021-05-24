@@ -10,6 +10,7 @@ module.exports = merge(common, {
     path: path.resolve(__dirname, "dist")
   },
   plugins: [
+    // let webpack using this template.html file to attach the WebPacked JS file <script></script> into it
     new HtmlWebpackPlugin({
       template: "./src/template.html"
     })
@@ -18,8 +19,9 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.scss$/,
+        // there is order in the use:[1,2,3] array -> the order would be 3->2->1
         use: [
-          "style-loader", //3. Inject styles into DOM
+          "style-loader", //3. Inject styles JS code into DOM
           "css-loader", //2. Turns css into commonjs
           "sass-loader" //1. Turns sass into css
         ]
@@ -27,3 +29,5 @@ module.exports = merge(common, {
     ]
   }
 });
+
+

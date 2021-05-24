@@ -1,5 +1,7 @@
-import { inputsAreValid } from "./utils/inputs-are-valid";
-import { parseInputs } from "./utils/parse-inputs";
+// import { inputsAreValid } from "./utils/inputs-are-valid";
+// import { parseInputs } from "./utils/parse-inputs";
+import { inputsAreValid, parseInputs } from "./utils/*";
+
 export const run = (alertService, componentService) => {
   alertService.hideErrors();
 
@@ -16,3 +18,6 @@ export const run = (alertService, componentService) => {
     }
   });
 };
+
+
+
